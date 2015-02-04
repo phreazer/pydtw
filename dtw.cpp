@@ -111,7 +111,7 @@ ftype meta_dtw(std::vector<ftype>* N, std::vector<ftype>* H, itype w,
         itype i = Nsize, j = Hsize;
         
         // until starting node reached
-        while (i > 1 || j > 1) {
+        while (i != 0 && j != 0) {
             // add node to warping path
             path->push_back(std::pair<itype, itype>(i - 1, j - 1));
             // manipulate indices of needle
@@ -127,7 +127,6 @@ ftype meta_dtw(std::vector<ftype>* N, std::vector<ftype>* H, itype w,
                 j -= 1;
             }
         }
-        path->push_back(std::pair<itype, itype>(0, 0));
         // reverse the warping path
         std::reverse(path->begin(), path->end());
     
